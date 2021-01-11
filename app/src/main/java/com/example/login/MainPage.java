@@ -10,18 +10,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainPage extends AppCompatActivity {
 
-    TextView nome, email;
+    TextView nome, cpf, data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         nome = findViewById(R.id.textNome);
-        email = findViewById(R.id.textEmail);
+        cpf = findViewById(R.id.textCpf);
+        data = findViewById(R.id.textData);
         SharedPreferences sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String text1 = sp.getString("nome", "");
-        String text2 = sp.getString("email", "");
+        String text2 = sp.getString("cpf", "");
+        String text3 = sp.getString("data", "");
         nome.setText(text1);
-        email.setText(text2);
+        cpf.setText(text2);
+        data.setText(text3);
     }
 }
