@@ -1,6 +1,7 @@
 package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             shared = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
             String chkNome = shared.getString("nome", "");
             String chkSenha = shared.getString("senha", "");
-            if(nomeStr.equals(chkNome) && chkSenha.equals(senhaStr)){
+            if(nomeStr.equals(chkNome) && chkSenha.equals(senhaStr) && !senhaStr.isEmpty() && !nomeStr.isEmpty()){
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(intent);
             }else{
